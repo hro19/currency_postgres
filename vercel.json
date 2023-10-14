@@ -9,7 +9,11 @@
   "routes": [
     { "src": "/", "dest": "index.ts" },
     { "src": "/api/v1/users", "dest": "index.ts" },
-    { "src": "/api/v1/users/:id", "dest": "index.ts" },
+    {
+      "src": "/api/v1/users/(.*)",
+      "headers": { "Location": "/api/v1/users/$1" },
+      "dest": "index.ts"
+    },
     { "src": "/api/v1/posts", "dest": "index.ts" }
   ]
 }
