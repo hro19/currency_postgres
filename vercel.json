@@ -8,6 +8,8 @@
   ],
   "routes": [
     { "src": "/", "dest": "index.ts" },
-    { "src": "/api/v1/users", "dest": "index.ts" }
+    { "src": "/api/v1/users", "dest": "index.ts" },
+    { "src": "/api/v1/users/:id", "dest": "index.ts" },
+    { "src": "/api/v1/posts", "dest": "index.ts" }
   ]
 }
