@@ -10,6 +10,10 @@ app.use(cors());
 
 const prisma = new PrismaClient();
 
+app.get("/", (req: Request, res: Response) => {
+  return res.json({"message":"HelloWorld"});
+});
+
 app.get("/api/v1/users", async (req: Request, res: Response) => {
   const users = await prisma.user.findMany();
   return res.json(users);
