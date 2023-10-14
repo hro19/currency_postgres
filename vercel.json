@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.ts",
+      "src": "index.ts", // エントリーポイントのファイル名を指定
       "use": "@now/node"
     }
   ],
   "routes": [
-    {
-      "src": "/api/v1/users",
-      "dest": "index.ts"
-    },
+    { "src": "/api/v1/users", "dest": "index.ts" }, // エンドポイントごとの設定
+    { "src": "/api/v1/users/:id", "dest": "index.ts" },
+    { "src": "/api/v1/posts", "dest": "index.ts" },
+    // 他のAPIエンドポイントに関する設定
   ]
 }
