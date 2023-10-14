@@ -7,6 +7,9 @@ app.use(express.json());
 const cors = require('cors');
 app.use(cors());
 
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
 app.get("/", (req: Request, res: Response) => res.json({ "mes": "Hello World!" }));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
