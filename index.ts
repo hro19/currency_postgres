@@ -10,6 +10,6 @@ app.use(cors());
 
 const prisma = new PrismaClient();
 
-app.get("/", (req: Request, res: Response) => res.send("Hello World!"));
+app.get("/", (req: Request, res: Response) => res.json({ "mes": "Hello World!" }));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
