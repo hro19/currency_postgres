@@ -2,33 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.ts",
-      "use": "@vercel/node"
+      "src": "app.js",
+      "use": "@now/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/v1/posts/",
-      "dest": "index.ts"
-    },
-    {
-      "src": "/api/v1/posts/(.*)",
-      "headers": { "Location": "/api/v1/posts/$1" },
-      "dest": "index.ts"
-    },
-    {
-      "src": "/api/v1/users",
-      "dest": "index.ts"
-    },
-    {
-      "src": "/api/v1/users/(.*)",
-      "headers": { "Location": "/api/v1/users/$1" },
-      "dest": "index.ts"
-    },
-    {
-      "src": "/api/v1/users/(.*)/tasks",
-      "headers": { "Location": "/api/v1/users/$1/tasks" },
-      "dest": "index.ts"
-    },
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
   ]
 }
