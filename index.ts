@@ -11,6 +11,8 @@ app.use(cors());
 const prisma = new PrismaClient();
 
 app.get("/api/v1/users", async (req: Request, res: Response) => {
+    res.setHeader("Content-Type", "text/html");
+    res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   const users = await prisma.user.findMany({
     include: { Posts: true },
   });
@@ -18,6 +20,8 @@ app.get("/api/v1/users", async (req: Request, res: Response) => {
 });
 
 app.post("/api/v1/users", async (req: Request, res: Response) => {
+    res.setHeader("Content-Type", "text/html");
+    res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   const { name, email } = req.body;
   try {
     const user = await prisma.user.create({
