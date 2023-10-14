@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "./prisma/generated/client/edge";
 
 const app = express();
 const port = 5000;
