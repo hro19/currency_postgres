@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "index.ts", // エントリーポイントのファイル名を指定
-      "use": "@now/node"
+      "use": "@vercel/node"
     }
   ],
   "routes": [
