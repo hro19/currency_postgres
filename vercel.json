@@ -2,33 +2,33 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "index.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/posts/",
-      "dest": "index.js"
+      "dest": "index.ts"
     },
     {
       "src": "/api/v1/posts/(.*)",
       "headers": { "Location": "/api/v1/posts/$1" },
-      "dest": "index.js"
+      "dest": "index.ts"
     },
     {
       "src": "/api/v1/users",
-      "dest": "index.js"
+      "dest": "index.ts"
     },
     {
       "src": "/api/v1/users/(.*)",
       "headers": { "Location": "/api/v1/users/$1" },
-      "dest": "index.js"
+      "dest": "index.ts"
     },
     {
       "src": "/api/v1/users/(.*)/tasks",
       "headers": { "Location": "/api/v1/users/$1/tasks" },
-      "dest": "index.js"
+      "dest": "index.ts"
     },
   ]
 }
