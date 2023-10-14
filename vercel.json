@@ -2,13 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.ts",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/api/v1/users", "dest": "index.ts" },
-    { "src": "/api/v1/users/:id", "dest": "index.ts" },
-    { "src": "/api/v1/posts", "dest": "index.ts" },
+    { "src": "/api/v1/users", "dest": "index.js" },
+    { "src": "/api/v1/users/:id", "dest": "index.js" },
+    { "src": "/api/v1/posts", "dest": "index.js" }
   ]
 }
