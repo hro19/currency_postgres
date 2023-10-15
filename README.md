@@ -28,3 +28,6 @@ npx prisma generate
 ```ts
 import { PrismaClient } from "./prisma/generated/client";
 ```
+
+## PrismaをVercelへのデプロイ方法
+[Deploy to Vercel](https://www.prisma.io/docs/guides/deployment/serverless/deploy-to-vercel)
