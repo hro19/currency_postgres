@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
-import { PrismaClient } from "./prisma/generated/client";
-// import { PrismaClient } from '@prisma/client'
+// import { PrismaClient } from "./prisma/generated/client";
+import { PrismaClient } from '@prisma/client'
+const { validateToken } = require("./middleware"); 
 
 const app = express();
 const port = 5000;
@@ -92,7 +93,7 @@ app.post("/api/v1/posts", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/api/v1/posts", async (req: Request, res: Response) => {
+app.get("/api/v1/posts",validateToken, async (req: Request, res: Response) => {
   const posts = await prisma.post.findMany();
   return res.json(posts);
 });
