@@ -69,19 +69,22 @@ app.get("/api/v1/items", async (req: Request, res: Response) => {
 //   }
 // });
 
-// app.get("/api/v1/users/:id", async (req: Request, res: Response) => {
-//   const id = Number(req.params.id);
-//   try {
-//     const user = await prisma.user.findUnique({
-//       where: {
-//         id,
-//       },
-//     });
-//     return res.json(user);
-//   } catch (e) {
-//     return res.status(400).json(e);
-//   }
-// });
+app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  try {
+    const item = await prisma.item.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        histories: true,
+      },
+    });
+    return res.json(item);
+  } catch (e) {
+    return res.status(400).json(e);
+  }
+});
 
 // app.post("/api/v1/posts", async (req: Request, res: Response) => {
 //   const { title, content, authorId } = req.body;

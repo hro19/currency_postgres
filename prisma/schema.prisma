@@ -22,7 +22,7 @@ model Item {
 
 model ItemHistory {
   id        Int      @id @default(autoincrement())
-  price     Decimal
+  price     Int
   created_at DateTime
   item      Item     @relation(fields: [itemId], references: [id])
   itemId    Int
