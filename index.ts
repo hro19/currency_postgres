@@ -13,7 +13,11 @@ const prisma = new PrismaClient();
 
 app.get("/api/v1/items", async (req: Request, res: Response) => {
   try {
-    const items = await prisma.item.findMany();
+    const items = await prisma.item.findMany({
+      include: {
+        histories: true,
+      },
+    });
     res.json(items);
   } catch (error: any) {
     console.error("Error fetching items:", error);
