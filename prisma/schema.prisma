@@ -12,18 +12,18 @@ datasource db {
   // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model User {
-  id         Int     @id @default(autoincrement())
-  email      String  @unique
-  name String?
-  Posts Post[]
+// schema.prisma
+model Item {
+  id        Int      @id @default(autoincrement())
+  name      String
+  nationalCode String
+  histories  ItemHistory[]
 }
 
-model Post {
-  id       Int    @id @default(autoincrement())
-  title    String
-  content String?
-  author   User @relation(fields: [authorId], references: [id])
-  authorId Int
-  items   Json
+model ItemHistory {
+  id        Int      @id @default(autoincrement())
+  price     Decimal
+  created_at DateTime
+  item      Item     @relation(fields: [itemId], references: [id])
+  itemId    Int
 }
