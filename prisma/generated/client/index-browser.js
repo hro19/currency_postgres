@@ -111,13 +111,15 @@ exports.Prisma.ItemScalarFieldEnum = {
   id: 'id',
   name: 'name',
   currencyCode: 'currencyCode',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.ItemHistoryScalarFieldEnum = {
   id: 'id',
   price: 'price',
   created_at: 'created_at',
+  updated_at: 'updated_at',
   itemId: 'itemId'
 };
 
@@ -129,6 +131,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

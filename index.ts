@@ -63,14 +63,12 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
 
 app.post("/api/v1/items", async (req: Request, res: Response) => {
   const { name, currencyCode } = req.body;
-  const created_at = new Date();
 
   try {
     const item = await prisma.item.create({
       data: {
         name,
         currencyCode,
-        created_at,
       },
     });
 
@@ -87,7 +85,7 @@ app.put("/api/v1/items/:id", async (req: Request, res: Response) => {
   try {
     const item = await prisma.item.update({
       where: { id },
-      data: { name, currencyCode },
+      data: { name, currencyCode, updated_at: new Date() },
     });
     return res.json(item);
   } catch (e) {
@@ -119,12 +117,10 @@ app.get("/api/v1/itemhistory", async (req: Request, res: Response) => {
 //アイテム値段履歴の新規作成
 app.post("/api/v1/itemhistory", async (req: Request, res: Response) => {
   const { price, itemId } = req.body;
-  const created_at = new Date();
   try {
     const itemHistory = await prisma.itemHistory.create({
       data: {
         price,
-        created_at,
         itemId,
       },
     });
@@ -141,7 +137,7 @@ app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
   try {
     const itemHistory = await prisma.itemHistory.update({
       where: { id },
-      data: { price, itemId },
+      data: { price, itemId, updated_at: new Date() },
     });
     return res.json(itemHistory);
   } catch (e) {

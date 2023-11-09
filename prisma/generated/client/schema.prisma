@@ -17,14 +17,16 @@ model Item {
   id        Int      @id @default(autoincrement())
   name      String
   currencyCode String
-  created_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime? @default(now())
   histories  ItemHistory[]
 }
 
 model ItemHistory {
   id        Int      @id @default(autoincrement())
   price     Int
-  created_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime? @default(now())
   item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId    Int
 }
