@@ -149,4 +149,19 @@ app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
   }
 });
 
+app.delete("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  try {
+    const itemHistory = await prisma.itemHistory.delete({
+      where: {
+        id,
+      },
+    });
+    return res.json(itemHistory);
+  } catch (e) {
+    return res.status(400).json(e);
+  }
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
