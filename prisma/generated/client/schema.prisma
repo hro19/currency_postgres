@@ -25,6 +25,6 @@ model ItemHistory {
   id        Int      @id @default(autoincrement())
   price     Int
   created_at DateTime
-  item      Item     @relation(fields: [itemId], references: [id])
+  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId    Int
 }
