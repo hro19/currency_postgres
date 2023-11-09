@@ -110,27 +110,43 @@ app.delete("/api/v1/items/:id", async (req: Request, res: Response) => {
   }
 });
 
+//アイテム値段履歴の一覧取得
+app.get("/api/v1/itemhistory", async (req: Request, res: Response) => {
+  const ItemHistorys = await prisma.itemHistory.findMany();
+  return res.json(ItemHistorys);
+});
 
+//アイテム値段履歴の新規作成
+app.post("/api/v1/itemhistory", async (req: Request, res: Response) => {
+  const { price, itemId } = req.body;
+  const created_at = new Date();
+  try {
+    const itemHistory = await prisma.itemHistory.create({
+      data: {
+        price,
+        created_at,
+        itemId,
+      },
+    });
+    return res.json(itemHistory);
+  } catch (e) {
+    return res.status(400).json(e);
+  }
+});
 
-// app.post("/api/v1/posts", async (req: Request, res: Response) => {
-//   const { title, content, authorId } = req.body;
-//   try {
-//     const post = await prisma.post.create({
-//       data: {
-//         title,
-//         content,
-//         authorId,
-//       },
-//     });
-//     return res.json(post);
-//   } catch (e) {
-//     return res.status(400).json(e);
-//   }
-// });
-
-// app.get("/api/v1/posts", async (req: Request, res: Response) => {
-//   const posts = await prisma.post.findMany();
-//   return res.json(posts);
-// });
+//アイテム値段履歴の編集
+app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const { price, itemId } = req.body;
+  try {
+    const itemHistory = await prisma.itemHistory.update({
+      where: { id },
+      data: { price, itemId },
+    });
+    return res.json(itemHistory);
+  } catch (e) {
+    return res.status(400).json(e);
+  }
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
