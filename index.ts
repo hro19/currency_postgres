@@ -61,20 +61,25 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
   }
 });
 
-// app.post("/api/v1/users", async (req: Request, res: Response) => {
-//   const { name, email } = req.body;
-//   try {
-//     const user = await prisma.user.create({
-//       data: {
-//         name,
-//         email,
-//       },
-//     });
-//     return res.json(user);
-//   } catch (e) {
-//     return res.status(400).json(e);
-//   }
-// });
+app.post("/api/v1/items", async (req: Request, res: Response) => {
+  const { name, currencyCode } = req.body;
+  const created_at = new Date();
+
+  try {
+    const item = await prisma.item.create({
+      data: {
+        name,
+        currencyCode,
+        created_at,
+      },
+    });
+
+    return res.json(item);
+  } catch (e) {
+    console.error("Error creating item:", e);
+    return res.status(400).json({ error: "Error creating item" });
+  }
+});
 
 // app.put("/api/v1/users/:id", async (req: Request, res: Response) => {
 //   const id = Number(req.params.id);
