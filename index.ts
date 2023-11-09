@@ -87,7 +87,7 @@ app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
 });
 
 app.get(
-  "/api/v1/items/currencyCode/:currencyCode",
+  "/api/v1/items/currency/:currencyCode",
   async (req: Request, res: Response) => {
     const currencyCode = req.params.currencyCode;
     try {
