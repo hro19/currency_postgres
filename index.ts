@@ -86,6 +86,28 @@ app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
   }
 });
 
+app.get(
+  "/api/v1/items/currencyCode/:currencyCode",
+  async (req: Request, res: Response) => {
+    const currencyCode = req.params.currencyCode;
+    try {
+      const items = await prisma.item.findMany({
+        where: {
+          currencyCode: {
+            equals: currencyCode,
+          },
+        },
+        include: {
+          histories: true,
+        },
+      });
+      return res.json(items);
+    } catch (e) {
+      return res.status(400).json(e);
+    }
+  }
+);
+
 // app.post("/api/v1/posts", async (req: Request, res: Response) => {
 //   const { title, content, authorId } = req.body;
 //   try {

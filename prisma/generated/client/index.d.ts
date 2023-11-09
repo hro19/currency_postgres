@@ -994,19 +994,22 @@ export namespace Prisma {
   export type ItemMinAggregateOutputType = {
     id: number | null
     name: string | null
-    nationalCode: string | null
+    currencyCode: string | null
+    created_at: Date | null
   }
 
   export type ItemMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    nationalCode: string | null
+    currencyCode: string | null
+    created_at: Date | null
   }
 
   export type ItemCountAggregateOutputType = {
     id: number
     name: number
-    nationalCode: number
+    currencyCode: number
+    created_at: number
     _all: number
   }
 
@@ -1022,19 +1025,22 @@ export namespace Prisma {
   export type ItemMinAggregateInputType = {
     id?: true
     name?: true
-    nationalCode?: true
+    currencyCode?: true
+    created_at?: true
   }
 
   export type ItemMaxAggregateInputType = {
     id?: true
     name?: true
-    nationalCode?: true
+    currencyCode?: true
+    created_at?: true
   }
 
   export type ItemCountAggregateInputType = {
     id?: true
     name?: true
-    nationalCode?: true
+    currencyCode?: true
+    created_at?: true
     _all?: true
   }
 
@@ -1127,7 +1133,8 @@ export namespace Prisma {
   export type ItemGroupByOutputType = {
     id: number
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1152,7 +1159,8 @@ export namespace Prisma {
   export type ItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    nationalCode?: boolean
+    currencyCode?: boolean
+    created_at?: boolean
     histories?: boolean | Item$historiesArgs<ExtArgs>
     _count?: boolean | ItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -1160,7 +1168,8 @@ export namespace Prisma {
   export type ItemSelectScalar = {
     id?: boolean
     name?: boolean
-    nationalCode?: boolean
+    currencyCode?: boolean
+    created_at?: boolean
   }
 
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1177,7 +1186,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      nationalCode: string
+      currencyCode: string
+      created_at: Date
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1575,7 +1585,8 @@ export namespace Prisma {
   interface ItemFieldRefs {
     readonly id: FieldRef<"Item", 'Int'>
     readonly name: FieldRef<"Item", 'String'>
-    readonly nationalCode: FieldRef<"Item", 'String'>
+    readonly currencyCode: FieldRef<"Item", 'String'>
+    readonly created_at: FieldRef<"Item", 'DateTime'>
   }
     
 
@@ -1938,26 +1949,26 @@ export namespace Prisma {
 
   export type ItemHistoryAvgAggregateOutputType = {
     id: number | null
-    price: Decimal | null
+    price: number | null
     itemId: number | null
   }
 
   export type ItemHistorySumAggregateOutputType = {
     id: number | null
-    price: Decimal | null
+    price: number | null
     itemId: number | null
   }
 
   export type ItemHistoryMinAggregateOutputType = {
     id: number | null
-    price: Decimal | null
+    price: number | null
     created_at: Date | null
     itemId: number | null
   }
 
   export type ItemHistoryMaxAggregateOutputType = {
     id: number | null
-    price: Decimal | null
+    price: number | null
     created_at: Date | null
     itemId: number | null
   }
@@ -2093,7 +2104,7 @@ export namespace Prisma {
 
   export type ItemHistoryGroupByOutputType = {
     id: number
-    price: Decimal
+    price: number
     created_at: Date
     itemId: number
     _count: ItemHistoryCountAggregateOutputType | null
@@ -2144,7 +2155,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      price: Prisma.Decimal
+      price: number
       created_at: Date
       itemId: number
     }, ExtArgs["result"]["itemHistory"]>
@@ -2543,7 +2554,7 @@ export namespace Prisma {
    */ 
   interface ItemHistoryFieldRefs {
     readonly id: FieldRef<"ItemHistory", 'Int'>
-    readonly price: FieldRef<"ItemHistory", 'Decimal'>
+    readonly price: FieldRef<"ItemHistory", 'Int'>
     readonly created_at: FieldRef<"ItemHistory", 'DateTime'>
     readonly itemId: FieldRef<"ItemHistory", 'Int'>
   }
@@ -2890,7 +2901,8 @@ export namespace Prisma {
   export const ItemScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    nationalCode: 'nationalCode'
+    currencyCode: 'currencyCode',
+    created_at: 'created_at'
   };
 
   export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
@@ -2956,20 +2968,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -3006,14 +3004,16 @@ export namespace Prisma {
     NOT?: ItemWhereInput | ItemWhereInput[]
     id?: IntFilter<"Item"> | number
     name?: StringFilter<"Item"> | string
-    nationalCode?: StringFilter<"Item"> | string
+    currencyCode?: StringFilter<"Item"> | string
+    created_at?: DateTimeFilter<"Item"> | Date | string
     histories?: ItemHistoryListRelationFilter
   }
 
   export type ItemOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    nationalCode?: SortOrder
+    currencyCode?: SortOrder
+    created_at?: SortOrder
     histories?: ItemHistoryOrderByRelationAggregateInput
   }
 
@@ -3023,14 +3023,16 @@ export namespace Prisma {
     OR?: ItemWhereInput[]
     NOT?: ItemWhereInput | ItemWhereInput[]
     name?: StringFilter<"Item"> | string
-    nationalCode?: StringFilter<"Item"> | string
+    currencyCode?: StringFilter<"Item"> | string
+    created_at?: DateTimeFilter<"Item"> | Date | string
     histories?: ItemHistoryListRelationFilter
   }, "id">
 
   export type ItemOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    nationalCode?: SortOrder
+    currencyCode?: SortOrder
+    created_at?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -3044,7 +3046,8 @@ export namespace Prisma {
     NOT?: ItemScalarWhereWithAggregatesInput | ItemScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Item"> | number
     name?: StringWithAggregatesFilter<"Item"> | string
-    nationalCode?: StringWithAggregatesFilter<"Item"> | string
+    currencyCode?: StringWithAggregatesFilter<"Item"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Item"> | Date | string
   }
 
   export type ItemHistoryWhereInput = {
@@ -3052,7 +3055,7 @@ export namespace Prisma {
     OR?: ItemHistoryWhereInput[]
     NOT?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
     id?: IntFilter<"ItemHistory"> | number
-    price?: DecimalFilter<"ItemHistory"> | Decimal | DecimalJsLike | number | string
+    price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
     item?: XOR<ItemRelationFilter, ItemWhereInput>
@@ -3071,7 +3074,7 @@ export namespace Prisma {
     AND?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
     OR?: ItemHistoryWhereInput[]
     NOT?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
-    price?: DecimalFilter<"ItemHistory"> | Decimal | DecimalJsLike | number | string
+    price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
     item?: XOR<ItemRelationFilter, ItemWhereInput>
@@ -3094,95 +3097,102 @@ export namespace Prisma {
     OR?: ItemHistoryScalarWhereWithAggregatesInput[]
     NOT?: ItemHistoryScalarWhereWithAggregatesInput | ItemHistoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ItemHistory"> | number
-    price?: DecimalWithAggregatesFilter<"ItemHistory"> | Decimal | DecimalJsLike | number | string
+    price?: IntWithAggregatesFilter<"ItemHistory"> | number
     created_at?: DateTimeWithAggregatesFilter<"ItemHistory"> | Date | string
     itemId?: IntWithAggregatesFilter<"ItemHistory"> | number
   }
 
   export type ItemCreateInput = {
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date | string
     histories?: ItemHistoryCreateNestedManyWithoutItemInput
   }
 
   export type ItemUncheckedCreateInput = {
     id?: number
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date | string
     histories?: ItemHistoryUncheckedCreateNestedManyWithoutItemInput
   }
 
   export type ItemUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     histories?: ItemHistoryUpdateManyWithoutItemNestedInput
   }
 
   export type ItemUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     histories?: ItemHistoryUncheckedUpdateManyWithoutItemNestedInput
   }
 
   export type ItemCreateManyInput = {
     id?: number
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date | string
   }
 
   export type ItemUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryCreateInput = {
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
     item: ItemCreateNestedOneWithoutHistoriesInput
   }
 
   export type ItemHistoryUncheckedCreateInput = {
     id?: number
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
     itemId: number
   }
 
   export type ItemHistoryUpdateInput = {
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     item?: ItemUpdateOneRequiredWithoutHistoriesNestedInput
   }
 
   export type ItemHistoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ItemHistoryCreateManyInput = {
     id?: number
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
     itemId: number
   }
 
   export type ItemHistoryUpdateManyMutationInput = {
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
   }
@@ -3213,6 +3223,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type ItemHistoryListRelationFilter = {
     every?: ItemHistoryWhereInput
     some?: ItemHistoryWhereInput
@@ -3226,7 +3247,8 @@ export namespace Prisma {
   export type ItemCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    nationalCode?: SortOrder
+    currencyCode?: SortOrder
+    created_at?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
@@ -3236,13 +3258,15 @@ export namespace Prisma {
   export type ItemMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    nationalCode?: SortOrder
+    currencyCode?: SortOrder
+    created_at?: SortOrder
   }
 
   export type ItemMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    nationalCode?: SortOrder
+    currencyCode?: SortOrder
+    created_at?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
@@ -3283,18 +3307,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3302,7 +3315,10 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type ItemRelationFilter = {
@@ -3343,36 +3359,6 @@ export namespace Prisma {
     itemId?: SortOrder
   }
 
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type ItemHistoryCreateNestedManyWithoutItemInput = {
     create?: XOR<ItemHistoryCreateWithoutItemInput, ItemHistoryUncheckedCreateWithoutItemInput> | ItemHistoryCreateWithoutItemInput[] | ItemHistoryUncheckedCreateWithoutItemInput[]
     connectOrCreate?: ItemHistoryCreateOrConnectWithoutItemInput | ItemHistoryCreateOrConnectWithoutItemInput[]
@@ -3389,6 +3375,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type ItemHistoryUpdateManyWithoutItemNestedInput = {
@@ -3433,18 +3423,6 @@ export namespace Prisma {
     connect?: ItemWhereUniqueInput
   }
 
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type ItemUpdateOneRequiredWithoutHistoriesNestedInput = {
     create?: XOR<ItemCreateWithoutHistoriesInput, ItemUncheckedCreateWithoutHistoriesInput>
     connectOrCreate?: ItemCreateOrConnectWithoutHistoriesInput
@@ -3476,6 +3454,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3522,44 +3511,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3575,13 +3526,13 @@ export namespace Prisma {
   }
 
   export type ItemHistoryCreateWithoutItemInput = {
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
   }
 
   export type ItemHistoryUncheckedCreateWithoutItemInput = {
     id?: number
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
   }
 
@@ -3616,20 +3567,22 @@ export namespace Prisma {
     OR?: ItemHistoryScalarWhereInput[]
     NOT?: ItemHistoryScalarWhereInput | ItemHistoryScalarWhereInput[]
     id?: IntFilter<"ItemHistory"> | number
-    price?: DecimalFilter<"ItemHistory"> | Decimal | DecimalJsLike | number | string
+    price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
   }
 
   export type ItemCreateWithoutHistoriesInput = {
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date | string
   }
 
   export type ItemUncheckedCreateWithoutHistoriesInput = {
     id?: number
     name: string
-    nationalCode: string
+    currencyCode: string
+    created_at: Date | string
   }
 
   export type ItemCreateOrConnectWithoutHistoriesInput = {
@@ -3650,35 +3603,37 @@ export namespace Prisma {
 
   export type ItemUpdateWithoutHistoriesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemUncheckedUpdateWithoutHistoriesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    nationalCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryCreateManyItemInput = {
     id?: number
-    price: Decimal | DecimalJsLike | number | string
+    price: number
     created_at: Date | string
   }
 
   export type ItemHistoryUpdateWithoutItemInput = {
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateManyWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

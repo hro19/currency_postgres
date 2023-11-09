@@ -110,7 +110,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ItemScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  nationalCode: 'nationalCode'
+  currencyCode: 'currencyCode',
+  created_at: 'created_at'
 };
 
 exports.Prisma.ItemHistoryScalarFieldEnum = {

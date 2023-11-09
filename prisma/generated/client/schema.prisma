@@ -16,13 +16,14 @@ datasource db {
 model Item {
   id        Int      @id @default(autoincrement())
   name      String
-  nationalCode String
+  currencyCode String
+  created_at DateTime
   histories  ItemHistory[]
 }
 
 model ItemHistory {
   id        Int      @id @default(autoincrement())
-  price     Decimal
+  price     Int
   created_at DateTime
   item      Item     @relation(fields: [itemId], references: [id])
   itemId    Int
