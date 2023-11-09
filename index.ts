@@ -81,19 +81,19 @@ app.post("/api/v1/items", async (req: Request, res: Response) => {
   }
 });
 
-// app.put("/api/v1/users/:id", async (req: Request, res: Response) => {
-//   const id = Number(req.params.id);
-//   const { name,email } = req.body;
-//   try {
-//     const user = await prisma.user.update({
-//       where: {id},
-//       data: {name,email},
-//     });
-//     return res.json(user);
-//   } catch (e) {
-//     return res.status(400).json(e);
-//   }
-// });
+app.put("/api/v1/items/:id", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const { name, currencyCode } = req.body;
+  try {
+    const item = await prisma.item.update({
+      where: { id },
+      data: { name, currencyCode },
+    });
+    return res.json(item);
+  } catch (e) {
+    return res.status(400).json(e);
+  }
+});
 
 app.delete("/api/v1/items/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
