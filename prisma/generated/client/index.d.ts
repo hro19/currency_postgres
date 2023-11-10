@@ -25,6 +25,23 @@ export type Item = $Result.DefaultSelection<Prisma.$ItemPayload>
 export type ItemHistory = $Result.DefaultSelection<Prisma.$ItemHistoryPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const CurrencyCode: {
+  php: 'php',
+  thb: 'thb'
+};
+
+export type CurrencyCode = (typeof CurrencyCode)[keyof typeof CurrencyCode]
+
+}
+
+export type CurrencyCode = $Enums.CurrencyCode
+
+export const CurrencyCode: typeof $Enums.CurrencyCode
+
+/**
  * ##  Prisma Client ʲˢ
  * 
  * Type-safe database client for TypeScript & Node.js
@@ -994,7 +1011,7 @@ export namespace Prisma {
   export type ItemMinAggregateOutputType = {
     id: number | null
     name: string | null
-    currencyCode: string | null
+    currencyCode: $Enums.CurrencyCode | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1002,7 +1019,7 @@ export namespace Prisma {
   export type ItemMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    currencyCode: string | null
+    currencyCode: $Enums.CurrencyCode | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1139,9 +1156,9 @@ export namespace Prisma {
   export type ItemGroupByOutputType = {
     id: number
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at: Date
-    updated_at: Date | null
+    updated_at: Date
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1195,9 +1212,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      currencyCode: string
+      currencyCode: $Enums.CurrencyCode
       created_at: Date
-      updated_at: Date | null
+      updated_at: Date
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1595,7 +1612,7 @@ export namespace Prisma {
   interface ItemFieldRefs {
     readonly id: FieldRef<"Item", 'Int'>
     readonly name: FieldRef<"Item", 'String'>
-    readonly currencyCode: FieldRef<"Item", 'String'>
+    readonly currencyCode: FieldRef<"Item", 'CurrencyCode'>
     readonly created_at: FieldRef<"Item", 'DateTime'>
     readonly updated_at: FieldRef<"Item", 'DateTime'>
   }
@@ -2123,7 +2140,7 @@ export namespace Prisma {
     id: number
     price: number
     created_at: Date
-    updated_at: Date | null
+    updated_at: Date
     itemId: number
     _count: ItemHistoryCountAggregateOutputType | null
     _avg: ItemHistoryAvgAggregateOutputType | null
@@ -2177,7 +2194,7 @@ export namespace Prisma {
       id: number
       price: number
       created_at: Date
-      updated_at: Date | null
+      updated_at: Date
       itemId: number
     }, ExtArgs["result"]["itemHistory"]>
     composites: {}
@@ -2958,14 +2975,6 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   /**
    * Field references 
    */
@@ -2996,6 +3005,20 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CurrencyCode'
+   */
+  export type EnumCurrencyCodeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CurrencyCode'>
+    
+
+
+  /**
+   * Reference to a field of type 'CurrencyCode[]'
+   */
+  export type ListEnumCurrencyCodeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CurrencyCode[]'>
     
 
 
@@ -3036,9 +3059,9 @@ export namespace Prisma {
     NOT?: ItemWhereInput | ItemWhereInput[]
     id?: IntFilter<"Item"> | number
     name?: StringFilter<"Item"> | string
-    currencyCode?: StringFilter<"Item"> | string
+    currencyCode?: EnumCurrencyCodeFilter<"Item"> | $Enums.CurrencyCode
     created_at?: DateTimeFilter<"Item"> | Date | string
-    updated_at?: DateTimeNullableFilter<"Item"> | Date | string | null
+    updated_at?: DateTimeFilter<"Item"> | Date | string
     histories?: ItemHistoryListRelationFilter
   }
 
@@ -3047,7 +3070,7 @@ export namespace Prisma {
     name?: SortOrder
     currencyCode?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrder
     histories?: ItemHistoryOrderByRelationAggregateInput
   }
 
@@ -3057,9 +3080,9 @@ export namespace Prisma {
     OR?: ItemWhereInput[]
     NOT?: ItemWhereInput | ItemWhereInput[]
     name?: StringFilter<"Item"> | string
-    currencyCode?: StringFilter<"Item"> | string
+    currencyCode?: EnumCurrencyCodeFilter<"Item"> | $Enums.CurrencyCode
     created_at?: DateTimeFilter<"Item"> | Date | string
-    updated_at?: DateTimeNullableFilter<"Item"> | Date | string | null
+    updated_at?: DateTimeFilter<"Item"> | Date | string
     histories?: ItemHistoryListRelationFilter
   }, "id">
 
@@ -3068,7 +3091,7 @@ export namespace Prisma {
     name?: SortOrder
     currencyCode?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -3082,9 +3105,9 @@ export namespace Prisma {
     NOT?: ItemScalarWhereWithAggregatesInput | ItemScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Item"> | number
     name?: StringWithAggregatesFilter<"Item"> | string
-    currencyCode?: StringWithAggregatesFilter<"Item"> | string
+    currencyCode?: EnumCurrencyCodeWithAggregatesFilter<"Item"> | $Enums.CurrencyCode
     created_at?: DateTimeWithAggregatesFilter<"Item"> | Date | string
-    updated_at?: DateTimeNullableWithAggregatesFilter<"Item"> | Date | string | null
+    updated_at?: DateTimeWithAggregatesFilter<"Item"> | Date | string
   }
 
   export type ItemHistoryWhereInput = {
@@ -3094,7 +3117,7 @@ export namespace Prisma {
     id?: IntFilter<"ItemHistory"> | number
     price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
-    updated_at?: DateTimeNullableFilter<"ItemHistory"> | Date | string | null
+    updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
     item?: XOR<ItemRelationFilter, ItemWhereInput>
   }
@@ -3103,7 +3126,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrder
     itemId?: SortOrder
     item?: ItemOrderByWithRelationInput
   }
@@ -3115,7 +3138,7 @@ export namespace Prisma {
     NOT?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
     price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
-    updated_at?: DateTimeNullableFilter<"ItemHistory"> | Date | string | null
+    updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
     item?: XOR<ItemRelationFilter, ItemWhereInput>
   }, "id">
@@ -3124,7 +3147,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrderInput | SortOrder
+    updated_at?: SortOrder
     itemId?: SortOrder
     _count?: ItemHistoryCountOrderByAggregateInput
     _avg?: ItemHistoryAvgOrderByAggregateInput
@@ -3140,71 +3163,71 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ItemHistory"> | number
     price?: IntWithAggregatesFilter<"ItemHistory"> | number
     created_at?: DateTimeWithAggregatesFilter<"ItemHistory"> | Date | string
-    updated_at?: DateTimeNullableWithAggregatesFilter<"ItemHistory"> | Date | string | null
+    updated_at?: DateTimeWithAggregatesFilter<"ItemHistory"> | Date | string
     itemId?: IntWithAggregatesFilter<"ItemHistory"> | number
   }
 
   export type ItemCreateInput = {
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
     histories?: ItemHistoryCreateNestedManyWithoutItemInput
   }
 
   export type ItemUncheckedCreateInput = {
     id?: number
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
     histories?: ItemHistoryUncheckedCreateNestedManyWithoutItemInput
   }
 
   export type ItemUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     histories?: ItemHistoryUpdateManyWithoutItemNestedInput
   }
 
   export type ItemUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     histories?: ItemHistoryUncheckedUpdateManyWithoutItemNestedInput
   }
 
   export type ItemCreateManyInput = {
     id?: number
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryCreateInput = {
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
     item: ItemCreateNestedOneWithoutHistoriesInput
   }
 
@@ -3212,14 +3235,14 @@ export namespace Prisma {
     id?: number
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
     itemId: number
   }
 
   export type ItemHistoryUpdateInput = {
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     item?: ItemUpdateOneRequiredWithoutHistoriesNestedInput
   }
 
@@ -3227,7 +3250,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3235,21 +3258,21 @@ export namespace Prisma {
     id?: number
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
     itemId: number
   }
 
   export type ItemHistoryUpdateManyMutationInput = {
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3279,6 +3302,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type EnumCurrencyCodeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    not?: NestedEnumCurrencyCodeFilter<$PrismaModel> | $Enums.CurrencyCode
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3290,26 +3320,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type ItemHistoryListRelationFilter = {
     every?: ItemHistoryWhereInput
     some?: ItemHistoryWhereInput
     none?: ItemHistoryWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type ItemHistoryOrderByRelationAggregateInput = {
@@ -3382,6 +3396,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type EnumCurrencyCodeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    not?: NestedEnumCurrencyCodeWithAggregatesFilter<$PrismaModel> | $Enums.CurrencyCode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCurrencyCodeFilter<$PrismaModel>
+    _max?: NestedEnumCurrencyCodeFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3394,20 +3418,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type ItemRelationFilter = {
@@ -3469,12 +3479,12 @@ export namespace Prisma {
     set?: string
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type EnumCurrencyCodeFieldUpdateOperationsInput = {
+    set?: $Enums.CurrencyCode
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type ItemHistoryUpdateManyWithoutItemNestedInput = {
@@ -3552,6 +3562,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedEnumCurrencyCodeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    not?: NestedEnumCurrencyCodeFilter<$PrismaModel> | $Enums.CurrencyCode
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3561,17 +3578,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3618,6 +3624,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedEnumCurrencyCodeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CurrencyCode | EnumCurrencyCodeFieldRefInput<$PrismaModel>
+    in?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CurrencyCode[] | ListEnumCurrencyCodeFieldRefInput<$PrismaModel>
+    not?: NestedEnumCurrencyCodeWithAggregatesFilter<$PrismaModel> | $Enums.CurrencyCode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCurrencyCodeFilter<$PrismaModel>
+    _max?: NestedEnumCurrencyCodeFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3632,42 +3648,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type ItemHistoryCreateWithoutItemInput = {
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemHistoryUncheckedCreateWithoutItemInput = {
     id?: number
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemHistoryCreateOrConnectWithoutItemInput = {
@@ -3703,23 +3694,23 @@ export namespace Prisma {
     id?: IntFilter<"ItemHistory"> | number
     price?: IntFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
-    updated_at?: DateTimeNullableFilter<"ItemHistory"> | Date | string | null
+    updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
   }
 
   export type ItemCreateWithoutHistoriesInput = {
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemUncheckedCreateWithoutHistoriesInput = {
     id?: number
     name: string
-    currencyCode: string
+    currencyCode: $Enums.CurrencyCode
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemCreateOrConnectWithoutHistoriesInput = {
@@ -3740,44 +3731,44 @@ export namespace Prisma {
 
   export type ItemUpdateWithoutHistoriesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemUncheckedUpdateWithoutHistoriesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    currencyCode?: StringFieldUpdateOperationsInput | string
+    currencyCode?: EnumCurrencyCodeFieldUpdateOperationsInput | $Enums.CurrencyCode
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryCreateManyItemInput = {
     id?: number
     price: number
     created_at?: Date | string
-    updated_at?: Date | string | null
+    updated_at?: Date | string
   }
 
   export type ItemHistoryUpdateWithoutItemInput = {
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemHistoryUncheckedUpdateManyWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

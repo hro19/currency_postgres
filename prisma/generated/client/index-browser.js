@@ -132,12 +132,10 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+exports.CurrencyCode = exports.$Enums.CurrencyCode = {
+  php: 'php',
+  thb: 'thb'
 };
-
 
 exports.Prisma.ModelName = {
   Item: 'Item',

@@ -47,9 +47,7 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
   try {
     const items = await prisma.item.findMany({
       where: {
-        currencyCode: {
-          equals: currencyCode,
-        },
+        currencyCode: currencyCode as any,
       },
       include: {
         histories: true,
@@ -157,6 +155,38 @@ app.delete("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
     return res.json(itemHistory);
   } catch (e) {
     return res.status(400).json(e);
+  }
+});
+
+app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
+  const { name, currencyCode, price } = req.body;
+
+  try {
+    await prisma.$transaction(async (prisma) => {
+      // 1. Item テーブルに新しいレコードを作成
+      const item = await prisma.item.create({
+        data: {
+          name,
+          currencyCode,
+        },
+      });
+
+      // 2. ItemHistory テーブルに新しいレコードを作成
+      const itemHistory = await prisma.itemHistory.create({
+        data: {
+          price,
+          itemId: item.id, // Item レコードの ID を使用して関連付け
+        },
+      });
+
+      // 応答に成功した情報を返す
+      return res.json({ item, itemHistory });
+    });
+  } catch (error) {
+    console.error("Error creating item and itemHistory:", error);
+    return res.status(400).json({ error: "Error creating item and itemHistory" });
+  } finally {
+    await prisma.$disconnect(); // 必要に応じてPrismaの接続を切断する
   }
 });
 
