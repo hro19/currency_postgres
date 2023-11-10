@@ -19,6 +19,12 @@
       "src": "/api/v1/itemhistory/(.*)",
       "headers": { "Location": "/api/v1/itemhistory/$1" },
       "dest": "index.ts"
+    },
+    {
+      "src": "/api/v1/itemsadd/(.*)",
+      "headers": { "Location": "/api/v1/itemsadd/$1" },
+      "dest": "index.ts"
     }
+
   ]
 }
