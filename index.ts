@@ -15,7 +15,11 @@ app.get("/api/v1/items", async (req: Request, res: Response) => {
   try {
     const items = await prisma.item.findMany({
       include: {
-        histories: true,
+        histories: {
+          orderBy: {
+            created_at: 'desc'
+          }
+        }
       },
     });
     res.json(items);
