@@ -14,6 +14,9 @@ const prisma = new PrismaClient();
 app.get("/api/v1/items", async (req: Request, res: Response) => {
   try {
     const items = await prisma.item.findMany({
+      orderBy: {
+        created_at: 'desc' 
+      },
       include: {
         histories: {
           orderBy: {
@@ -37,7 +40,11 @@ app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
         id,
       },
       include: {
-        histories: true,
+        histories: {
+          orderBy: {
+            created_at: 'desc'
+          }
+        }
       },
     });
     return res.json(item);
@@ -50,11 +57,18 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
   const currencyCode = req.params.currencyCode;
   try {
     const items = await prisma.item.findMany({
+      orderBy: {
+        created_at: 'desc' 
+      },
       where: {
         currencyCode: currencyCode as any,
       },
       include: {
-        histories: true,
+        histories: {
+          orderBy: {
+            created_at: 'desc'
+          }
+        }
       },
     });
     return res.json(items);
