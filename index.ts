@@ -25,10 +25,10 @@ app.get("/api/v1/items", async (req: Request, res: Response) => {
         }
       },
     });
-    res.json(items);
+    res.status(200).json({ httpStatus: 200, items });
   } catch (error: any) {
     console.error("Error fetching items:", error);
-    res.status(500).json({ error: "Error fetching items" });
+    res.status(500).json({ httpStatus: 500, error: "Error fetching items" });
   }
 });
 
@@ -47,7 +47,7 @@ app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
         }
       },
     });
-    return res.json(item);
+    res.status(200).json({ httpStatus: 200, item });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -71,7 +71,7 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
         }
       },
     });
-    return res.json(items);
+    res.status(200).json({ httpStatus: 200, items });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -88,7 +88,7 @@ app.post("/api/v1/items", async (req: Request, res: Response) => {
       },
     });
 
-    return res.json(item);
+    res.status(201).json({ httpStatus: 201, item });
   } catch (e) {
     console.error("Error creating item:", e);
     return res.status(400).json({ error: "Error creating item" });
@@ -103,7 +103,7 @@ app.put("/api/v1/items/:id", async (req: Request, res: Response) => {
       where: { id },
       data: { name, currencyCode, updated_at: new Date() },
     });
-    return res.json(item);
+    res.status(200).json({ httpStatus: 200, item });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -118,7 +118,7 @@ app.delete("/api/v1/items/:id", async (req: Request, res: Response) => {
         id,
       },
     });
-    return res.json(item);
+    res.status(200).json({ httpStatus: 200, item });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -126,8 +126,8 @@ app.delete("/api/v1/items/:id", async (req: Request, res: Response) => {
 
 //アイテム値段履歴の一覧取得
 app.get("/api/v1/itemhistory", async (req: Request, res: Response) => {
-  const ItemHistorys = await prisma.itemHistory.findMany();
-  return res.json(ItemHistorys);
+  const itemHistorys = await prisma.itemHistory.findMany();
+  res.status(200).json({ httpStatus: 200, itemHistorys });
 });
 
 //アイテム値段履歴の新規作成
@@ -140,7 +140,7 @@ app.post("/api/v1/itemhistory", async (req: Request, res: Response) => {
         itemId,
       },
     });
-    return res.json(itemHistory);
+  res.status(201).json({ httpStatus: 201, itemHistory });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -155,7 +155,7 @@ app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
       where: { id },
       data: { price, itemId, updated_at: new Date() },
     });
-    return res.json(itemHistory);
+  res.status(200).json({ httpStatus: 200, itemHistory });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -170,7 +170,7 @@ app.delete("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
         id,
       },
     });
-    return res.json(itemHistory);
+    res.status(200).json({ httpStatus: 200, itemHistory });
   } catch (e) {
     return res.status(400).json(e);
   }
@@ -198,7 +198,7 @@ app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
       });
 
       // 応答に成功した情報を返す
-      return res.json({ item, itemHistory });
+      res.status(201).json({ httpStatus: 201, item, itemHistory });
     });
   } catch (error) {
     console.error("Error creating item and itemHistory:", error);
