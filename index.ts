@@ -132,12 +132,14 @@ app.get("/api/v1/itemhistory", async (req: Request, res: Response) => {
 
 //アイテム値段履歴の新規作成
 app.post("/api/v1/itemhistory", async (req: Request, res: Response) => {
-  const { price, itemId } = req.body;
+  const { price, itemId, rate, inverseRate } = req.body;
   try {
     const itemHistory = await prisma.itemHistory.create({
       data: {
         price,
         itemId,
+        rate,
+        inverseRate,
       },
     });
   res.status(201).json({ httpStatus: 201, itemHistory });
@@ -149,11 +151,11 @@ app.post("/api/v1/itemhistory", async (req: Request, res: Response) => {
 //アイテム値段履歴の編集
 app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
-  const { price, itemId } = req.body;
+  const { price, itemId,rate,inverseRate } = req.body;
   try {
     const itemHistory = await prisma.itemHistory.update({
       where: { id },
-      data: { price, itemId, updated_at: new Date() },
+      data: { price, itemId, updated_at: new Date(), rate, inverseRate },
     });
   res.status(200).json({ httpStatus: 200, itemHistory });
   } catch (e) {
@@ -177,7 +179,7 @@ app.delete("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
 });
 
 app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
-  const { name, currencyCode, price } = req.body;
+  const { name, currencyCode, price, rate, inverseRate } = req.body;
 
   try {
     await prisma.$transaction(async (prisma) => {
@@ -185,7 +187,7 @@ app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
       const item = await prisma.item.create({
         data: {
           name,
-          currencyCode,
+          currencyCode
         },
       });
 
@@ -194,6 +196,8 @@ app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
         data: {
           price,
           itemId: item.id, // Item レコードの ID を使用して関連付け
+          rate,
+          inverseRate
         },
       });
 

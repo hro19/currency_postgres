@@ -118,6 +118,8 @@ exports.Prisma.ItemScalarFieldEnum = {
 exports.Prisma.ItemHistoryScalarFieldEnum = {
   id: 'id',
   price: 'price',
+  rate: 'rate',
+  inverseRate: 'inverseRate',
   created_at: 'created_at',
   updated_at: 'updated_at',
   itemId: 'itemId'

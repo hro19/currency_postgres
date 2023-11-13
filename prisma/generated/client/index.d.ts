@@ -1978,18 +1978,24 @@ export namespace Prisma {
   export type ItemHistoryAvgAggregateOutputType = {
     id: number | null
     price: number | null
+    rate: number | null
+    inverseRate: number | null
     itemId: number | null
   }
 
   export type ItemHistorySumAggregateOutputType = {
     id: number | null
     price: number | null
+    rate: number | null
+    inverseRate: number | null
     itemId: number | null
   }
 
   export type ItemHistoryMinAggregateOutputType = {
     id: number | null
     price: number | null
+    rate: number | null
+    inverseRate: number | null
     created_at: Date | null
     updated_at: Date | null
     itemId: number | null
@@ -1998,6 +2004,8 @@ export namespace Prisma {
   export type ItemHistoryMaxAggregateOutputType = {
     id: number | null
     price: number | null
+    rate: number | null
+    inverseRate: number | null
     created_at: Date | null
     updated_at: Date | null
     itemId: number | null
@@ -2006,6 +2014,8 @@ export namespace Prisma {
   export type ItemHistoryCountAggregateOutputType = {
     id: number
     price: number
+    rate: number
+    inverseRate: number
     created_at: number
     updated_at: number
     itemId: number
@@ -2016,18 +2026,24 @@ export namespace Prisma {
   export type ItemHistoryAvgAggregateInputType = {
     id?: true
     price?: true
+    rate?: true
+    inverseRate?: true
     itemId?: true
   }
 
   export type ItemHistorySumAggregateInputType = {
     id?: true
     price?: true
+    rate?: true
+    inverseRate?: true
     itemId?: true
   }
 
   export type ItemHistoryMinAggregateInputType = {
     id?: true
     price?: true
+    rate?: true
+    inverseRate?: true
     created_at?: true
     updated_at?: true
     itemId?: true
@@ -2036,6 +2052,8 @@ export namespace Prisma {
   export type ItemHistoryMaxAggregateInputType = {
     id?: true
     price?: true
+    rate?: true
+    inverseRate?: true
     created_at?: true
     updated_at?: true
     itemId?: true
@@ -2044,6 +2062,8 @@ export namespace Prisma {
   export type ItemHistoryCountAggregateInputType = {
     id?: true
     price?: true
+    rate?: true
+    inverseRate?: true
     created_at?: true
     updated_at?: true
     itemId?: true
@@ -2139,6 +2159,8 @@ export namespace Prisma {
   export type ItemHistoryGroupByOutputType = {
     id: number
     price: number
+    rate: number
+    inverseRate: number
     created_at: Date
     updated_at: Date
     itemId: number
@@ -2166,6 +2188,8 @@ export namespace Prisma {
   export type ItemHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     price?: boolean
+    rate?: boolean
+    inverseRate?: boolean
     created_at?: boolean
     updated_at?: boolean
     itemId?: boolean
@@ -2175,6 +2199,8 @@ export namespace Prisma {
   export type ItemHistorySelectScalar = {
     id?: boolean
     price?: boolean
+    rate?: boolean
+    inverseRate?: boolean
     created_at?: boolean
     updated_at?: boolean
     itemId?: boolean
@@ -2193,6 +2219,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       price: number
+      rate: number
+      inverseRate: number
       created_at: Date
       updated_at: Date
       itemId: number
@@ -2593,6 +2621,8 @@ export namespace Prisma {
   interface ItemHistoryFieldRefs {
     readonly id: FieldRef<"ItemHistory", 'Int'>
     readonly price: FieldRef<"ItemHistory", 'Int'>
+    readonly rate: FieldRef<"ItemHistory", 'Float'>
+    readonly inverseRate: FieldRef<"ItemHistory", 'Float'>
     readonly created_at: FieldRef<"ItemHistory", 'DateTime'>
     readonly updated_at: FieldRef<"ItemHistory", 'DateTime'>
     readonly itemId: FieldRef<"ItemHistory", 'Int'>
@@ -2951,6 +2981,8 @@ export namespace Prisma {
   export const ItemHistoryScalarFieldEnum: {
     id: 'id',
     price: 'price',
+    rate: 'rate',
+    inverseRate: 'inverseRate',
     created_at: 'created_at',
     updated_at: 'updated_at',
     itemId: 'itemId'
@@ -3116,6 +3148,8 @@ export namespace Prisma {
     NOT?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
     id?: IntFilter<"ItemHistory"> | number
     price?: IntFilter<"ItemHistory"> | number
+    rate?: FloatFilter<"ItemHistory"> | number
+    inverseRate?: FloatFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
@@ -3125,6 +3159,8 @@ export namespace Prisma {
   export type ItemHistoryOrderByWithRelationInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     itemId?: SortOrder
@@ -3137,6 +3173,8 @@ export namespace Prisma {
     OR?: ItemHistoryWhereInput[]
     NOT?: ItemHistoryWhereInput | ItemHistoryWhereInput[]
     price?: IntFilter<"ItemHistory"> | number
+    rate?: FloatFilter<"ItemHistory"> | number
+    inverseRate?: FloatFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
@@ -3146,6 +3184,8 @@ export namespace Prisma {
   export type ItemHistoryOrderByWithAggregationInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     itemId?: SortOrder
@@ -3162,6 +3202,8 @@ export namespace Prisma {
     NOT?: ItemHistoryScalarWhereWithAggregatesInput | ItemHistoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ItemHistory"> | number
     price?: IntWithAggregatesFilter<"ItemHistory"> | number
+    rate?: FloatWithAggregatesFilter<"ItemHistory"> | number
+    inverseRate?: FloatWithAggregatesFilter<"ItemHistory"> | number
     created_at?: DateTimeWithAggregatesFilter<"ItemHistory"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"ItemHistory"> | Date | string
     itemId?: IntWithAggregatesFilter<"ItemHistory"> | number
@@ -3226,6 +3268,8 @@ export namespace Prisma {
 
   export type ItemHistoryCreateInput = {
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
     item: ItemCreateNestedOneWithoutHistoriesInput
@@ -3234,6 +3278,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedCreateInput = {
     id?: number
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
     itemId: number
@@ -3241,6 +3287,8 @@ export namespace Prisma {
 
   export type ItemHistoryUpdateInput = {
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     item?: ItemUpdateOneRequiredWithoutHistoriesNestedInput
@@ -3249,6 +3297,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
@@ -3257,6 +3307,8 @@ export namespace Prisma {
   export type ItemHistoryCreateManyInput = {
     id?: number
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
     itemId: number
@@ -3264,6 +3316,8 @@ export namespace Prisma {
 
   export type ItemHistoryUpdateManyMutationInput = {
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3271,6 +3325,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     itemId?: IntFieldUpdateOperationsInput | number
@@ -3420,6 +3476,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type ItemRelationFilter = {
     is?: ItemWhereInput
     isNot?: ItemWhereInput
@@ -3428,6 +3495,8 @@ export namespace Prisma {
   export type ItemHistoryCountOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     itemId?: SortOrder
@@ -3436,12 +3505,16 @@ export namespace Prisma {
   export type ItemHistoryAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     itemId?: SortOrder
   }
 
   export type ItemHistoryMaxOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     itemId?: SortOrder
@@ -3450,6 +3523,8 @@ export namespace Prisma {
   export type ItemHistoryMinOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     itemId?: SortOrder
@@ -3458,7 +3533,25 @@ export namespace Prisma {
   export type ItemHistorySumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    rate?: SortOrder
+    inverseRate?: SortOrder
     itemId?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type ItemHistoryCreateNestedManyWithoutItemInput = {
@@ -3527,6 +3620,14 @@ export namespace Prisma {
     create?: XOR<ItemCreateWithoutHistoriesInput, ItemUncheckedCreateWithoutHistoriesInput>
     connectOrCreate?: ItemCreateOrConnectWithoutHistoriesInput
     connect?: ItemWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ItemUpdateOneRequiredWithoutHistoriesNestedInput = {
@@ -3648,8 +3749,26 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type ItemHistoryCreateWithoutItemInput = {
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -3657,6 +3776,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedCreateWithoutItemInput = {
     id?: number
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -3693,6 +3814,8 @@ export namespace Prisma {
     NOT?: ItemHistoryScalarWhereInput | ItemHistoryScalarWhereInput[]
     id?: IntFilter<"ItemHistory"> | number
     price?: IntFilter<"ItemHistory"> | number
+    rate?: FloatFilter<"ItemHistory"> | number
+    inverseRate?: FloatFilter<"ItemHistory"> | number
     created_at?: DateTimeFilter<"ItemHistory"> | Date | string
     updated_at?: DateTimeFilter<"ItemHistory"> | Date | string
     itemId?: IntFilter<"ItemHistory"> | number
@@ -3747,12 +3870,16 @@ export namespace Prisma {
   export type ItemHistoryCreateManyItemInput = {
     id?: number
     price: number
+    rate: number
+    inverseRate: number
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ItemHistoryUpdateWithoutItemInput = {
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3760,6 +3887,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedUpdateWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3767,6 +3896,8 @@ export namespace Prisma {
   export type ItemHistoryUncheckedUpdateManyWithoutItemInput = {
     id?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    inverseRate?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }

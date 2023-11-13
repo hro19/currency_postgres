@@ -23,12 +23,14 @@ model Item {
 }
 
 model ItemHistory {
-  id        Int      @id @default(autoincrement())
-  price     Int
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
-  itemId    Int
+  id          Int      @id @default(autoincrement())
+  price       Int
+  rate        Float
+  inverseRate Float
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+  item        Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId      Int
 }
 
 enum CurrencyCode {
