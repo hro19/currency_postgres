@@ -101,7 +101,7 @@ app.put("/api/v1/items/:id", async (req: Request, res: Response) => {
   try {
     const item = await prisma.item.update({
       where: { id },
-      data: { name, currencyCode, updated_at: new Date() },
+      data: { name, currencyCode },
     });
     res.status(200).json({ httpStatus: 200, item });
   } catch (e) {
@@ -155,7 +155,7 @@ app.put("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
   try {
     const itemHistory = await prisma.itemHistory.update({
       where: { id },
-      data: { price, itemId, updated_at: new Date(), rate, inverseRate },
+      data: { price, itemId, rate, inverseRate },
     });
   res.status(200).json({ httpStatus: 200, itemHistory });
   } catch (e) {
