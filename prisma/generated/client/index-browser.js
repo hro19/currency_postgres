@@ -135,8 +135,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 exports.CurrencyCode = exports.$Enums.CurrencyCode = {
+  aud: 'aud',
+  cny: 'cny',
+  krw: 'krw',
+  thb: 'thb',
+  twd: 'twd',
+  vnd: 'vnd',
+  jpy: 'jpy',
   php: 'php',
-  thb: 'thb'
+  usd: 'usd'
 };
 
 exports.Prisma.ModelName = {

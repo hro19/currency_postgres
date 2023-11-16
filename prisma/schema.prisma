@@ -34,6 +34,13 @@ model ItemHistory {
 }
 
 enum CurrencyCode {
-  php
+  aud
+  cny
+  krw
   thb
+  twd
+  vnd
+  jpy
+  php
+  usd
 }

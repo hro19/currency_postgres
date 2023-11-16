@@ -29,8 +29,15 @@ export type ItemHistory = $Result.DefaultSelection<Prisma.$ItemHistoryPayload>
  */
 export namespace $Enums {
   export const CurrencyCode: {
+  aud: 'aud',
+  cny: 'cny',
+  krw: 'krw',
+  thb: 'thb',
+  twd: 'twd',
+  vnd: 'vnd',
+  jpy: 'jpy',
   php: 'php',
-  thb: 'thb'
+  usd: 'usd'
 };
 
 export type CurrencyCode = (typeof CurrencyCode)[keyof typeof CurrencyCode]

@@ -18,22 +18,29 @@ model Item {
   name      String
   currencyCode CurrencyCode
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  updated_at DateTime @default(now())
   histories  ItemHistory[]
 }
 
 model ItemHistory {
-  id          Int      @id @default(autoincrement())
-  price       Int
-  rate        Float
+  id        Int      @id @default(autoincrement())
+  price     Int
+  rate      Float
   inverseRate Float
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  item        Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
-  itemId      Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId    Int
 }
 
 enum CurrencyCode {
-  php
+  aud
+  cny
+  krw
   thb
+  twd
+  vnd
+  jpy
+  php
+  usd
 }
