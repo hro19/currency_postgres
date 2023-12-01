@@ -20,6 +20,8 @@ model Item {
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   histories  ItemHistory[]
+  isPublic  Boolean @default(false)
+  thubmnail  String? @default("")
 }
 
 model ItemHistory {

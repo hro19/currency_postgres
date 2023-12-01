@@ -112,7 +112,9 @@ exports.Prisma.ItemScalarFieldEnum = {
   name: 'name',
   currencyCode: 'currencyCode',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  isPublic: 'isPublic',
+  thubmnail: 'thubmnail'
 };
 
 exports.Prisma.ItemHistoryScalarFieldEnum = {
@@ -133,6 +135,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.CurrencyCode = exports.$Enums.CurrencyCode = {
   aud: 'aud',
