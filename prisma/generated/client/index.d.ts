@@ -246,8 +246,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.5.2
-   * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+   * Prisma Client JS version: 5.8.1
+   * Query Engine version: 78caf6feeaed953168c64e15a249c3e9a033ebe2
    */
   export type PrismaVersion = {
     client: string
@@ -1023,6 +1023,7 @@ export namespace Prisma {
     updated_at: Date | null
     isPublic: boolean | null
     thubmnail: string | null
+    userEmail: string | null
   }
 
   export type ItemMaxAggregateOutputType = {
@@ -1033,6 +1034,7 @@ export namespace Prisma {
     updated_at: Date | null
     isPublic: boolean | null
     thubmnail: string | null
+    userEmail: string | null
   }
 
   export type ItemCountAggregateOutputType = {
@@ -1043,6 +1045,7 @@ export namespace Prisma {
     updated_at: number
     isPublic: number
     thubmnail: number
+    userEmail: number
     _all: number
   }
 
@@ -1063,6 +1066,7 @@ export namespace Prisma {
     updated_at?: true
     isPublic?: true
     thubmnail?: true
+    userEmail?: true
   }
 
   export type ItemMaxAggregateInputType = {
@@ -1073,6 +1077,7 @@ export namespace Prisma {
     updated_at?: true
     isPublic?: true
     thubmnail?: true
+    userEmail?: true
   }
 
   export type ItemCountAggregateInputType = {
@@ -1083,6 +1088,7 @@ export namespace Prisma {
     updated_at?: true
     isPublic?: true
     thubmnail?: true
+    userEmail?: true
     _all?: true
   }
 
@@ -1180,6 +1186,7 @@ export namespace Prisma {
     updated_at: Date
     isPublic: boolean
     thubmnail: string | null
+    userEmail: string
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1209,6 +1216,7 @@ export namespace Prisma {
     updated_at?: boolean
     isPublic?: boolean
     thubmnail?: boolean
+    userEmail?: boolean
     histories?: boolean | Item$historiesArgs<ExtArgs>
     _count?: boolean | ItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -1221,6 +1229,7 @@ export namespace Prisma {
     updated_at?: boolean
     isPublic?: boolean
     thubmnail?: boolean
+    userEmail?: boolean
   }
 
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1242,6 +1251,7 @@ export namespace Prisma {
       updated_at: Date
       isPublic: boolean
       thubmnail: string | null
+      userEmail: string
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1250,7 +1260,7 @@ export namespace Prisma {
   type ItemGetPayload<S extends boolean | null | undefined | ItemDefaultArgs> = $Result.GetResult<Prisma.$ItemPayload, S>
 
   type ItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ItemFindManyArgs, 'select' | 'include' | 'distinct' > & {
+    Omit<ItemFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ItemCountAggregateInputType | true
     }
 
@@ -1644,6 +1654,7 @@ export namespace Prisma {
     readonly updated_at: FieldRef<"Item", 'DateTime'>
     readonly isPublic: FieldRef<"Item", 'Boolean'>
     readonly thubmnail: FieldRef<"Item", 'String'>
+    readonly userEmail: FieldRef<"Item", 'String'>
   }
     
 
@@ -2261,7 +2272,7 @@ export namespace Prisma {
   type ItemHistoryGetPayload<S extends boolean | null | undefined | ItemHistoryDefaultArgs> = $Result.GetResult<Prisma.$ItemHistoryPayload, S>
 
   type ItemHistoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ItemHistoryFindManyArgs, 'select' | 'include' | 'distinct' > & {
+    Omit<ItemHistoryFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: ItemHistoryCountAggregateInputType | true
     }
 
@@ -3003,7 +3014,8 @@ export namespace Prisma {
     created_at: 'created_at',
     updated_at: 'updated_at',
     isPublic: 'isPublic',
-    thubmnail: 'thubmnail'
+    thubmnail: 'thubmnail',
+    userEmail: 'userEmail'
   };
 
   export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
@@ -3142,6 +3154,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Item"> | Date | string
     isPublic?: BoolFilter<"Item"> | boolean
     thubmnail?: StringNullableFilter<"Item"> | string | null
+    userEmail?: StringFilter<"Item"> | string
     histories?: ItemHistoryListRelationFilter
   }
 
@@ -3153,6 +3166,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     isPublic?: SortOrder
     thubmnail?: SortOrderInput | SortOrder
+    userEmail?: SortOrder
     histories?: ItemHistoryOrderByRelationAggregateInput
   }
 
@@ -3167,6 +3181,7 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Item"> | Date | string
     isPublic?: BoolFilter<"Item"> | boolean
     thubmnail?: StringNullableFilter<"Item"> | string | null
+    userEmail?: StringFilter<"Item"> | string
     histories?: ItemHistoryListRelationFilter
   }, "id">
 
@@ -3178,6 +3193,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     isPublic?: SortOrder
     thubmnail?: SortOrderInput | SortOrder
+    userEmail?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -3196,6 +3212,7 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"Item"> | Date | string
     isPublic?: BoolWithAggregatesFilter<"Item"> | boolean
     thubmnail?: StringNullableWithAggregatesFilter<"Item"> | string | null
+    userEmail?: StringWithAggregatesFilter<"Item"> | string
   }
 
   export type ItemHistoryWhereInput = {
@@ -3272,6 +3289,7 @@ export namespace Prisma {
     updated_at?: Date | string
     isPublic?: boolean
     thubmnail?: string | null
+    userEmail?: string
     histories?: ItemHistoryCreateNestedManyWithoutItemInput
   }
 
@@ -3283,6 +3301,7 @@ export namespace Prisma {
     updated_at?: Date | string
     isPublic?: boolean
     thubmnail?: string | null
+    userEmail?: string
     histories?: ItemHistoryUncheckedCreateNestedManyWithoutItemInput
   }
 
@@ -3293,6 +3312,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
     histories?: ItemHistoryUpdateManyWithoutItemNestedInput
   }
 
@@ -3304,6 +3324,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
     histories?: ItemHistoryUncheckedUpdateManyWithoutItemNestedInput
   }
 
@@ -3315,6 +3336,7 @@ export namespace Prisma {
     updated_at?: Date | string
     isPublic?: boolean
     thubmnail?: string | null
+    userEmail?: string
   }
 
   export type ItemUpdateManyMutationInput = {
@@ -3324,6 +3346,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemUncheckedUpdateManyInput = {
@@ -3334,6 +3357,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemHistoryCreateInput = {
@@ -3489,6 +3513,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     isPublic?: SortOrder
     thubmnail?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
@@ -3503,6 +3528,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     isPublic?: SortOrder
     thubmnail?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type ItemMinOrderByAggregateInput = {
@@ -3513,6 +3539,7 @@ export namespace Prisma {
     updated_at?: SortOrder
     isPublic?: SortOrder
     thubmnail?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
@@ -4018,6 +4045,7 @@ export namespace Prisma {
     updated_at?: Date | string
     isPublic?: boolean
     thubmnail?: string | null
+    userEmail?: string
   }
 
   export type ItemUncheckedCreateWithoutHistoriesInput = {
@@ -4028,6 +4056,7 @@ export namespace Prisma {
     updated_at?: Date | string
     isPublic?: boolean
     thubmnail?: string | null
+    userEmail?: string
   }
 
   export type ItemCreateOrConnectWithoutHistoriesInput = {
@@ -4053,6 +4082,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemUncheckedUpdateWithoutHistoriesInput = {
@@ -4063,6 +4093,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     thubmnail?: NullableStringFieldUpdateOperationsInput | string | null
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemHistoryCreateManyItemInput = {

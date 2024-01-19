@@ -22,6 +22,7 @@ model Item {
   histories  ItemHistory[]
   isPublic  Boolean @default(false)
   thubmnail  String? @default("")
+  userEmail String @default("")
 }
 
 model ItemHistory {
