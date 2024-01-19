@@ -13,7 +13,9 @@ const prisma = new PrismaClient();
 
 app.get("/api/v1/items", async (req: Request, res: Response) => {
   const { useremail } = req.headers;
-  // console.log(useremail);
+  if (!useremail) {
+    return res.status(500).json({ httpStatus: 500 });
+  }
   try {
     const items = await prisma.item.findMany({
       orderBy: {
