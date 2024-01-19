@@ -12,10 +12,15 @@ app.use(cors());
 const prisma = new PrismaClient();
 
 app.get("/api/v1/items", async (req: Request, res: Response) => {
+  const { useremail } = req.headers;
+  // console.log(useremail);
   try {
     const items = await prisma.item.findMany({
       orderBy: {
         created_at: 'desc' 
+      },
+      where: {
+        userEmail: useremail as string,
       },
       include: {
         histories: {
