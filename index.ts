@@ -61,10 +61,6 @@ app.get("/api/v1/items/:id", async (req: Request, res: Response) => {
 });
 
 app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Response) => {
-  const { useremail } = req.headers;
-  if (!useremail) {
-    return res.status(500).json({ httpStatus: 500 });
-  }
   const currencyCode = req.params.currencyCode;
   try {
     const items = await prisma.item.findMany({
@@ -73,7 +69,6 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
       },
       where: {
         currencyCode: currencyCode as any,
-        userEmail: useremail as string,
       },
       include: {
         histories: {
