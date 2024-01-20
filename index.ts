@@ -180,12 +180,42 @@ app.delete("/api/v1/itemhistory/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
-    const itemHistory = await prisma.itemHistory.delete({
+    // itemHistory テーブルのレコードを取得する
+    const itemHistory = await prisma.itemHistory.findFirst({
       where: {
         id,
       },
     });
-    res.status(200).json({ httpStatus: 200, itemHistory });
+
+    // item テーブルの ID を取得する
+    const itemId = itemHistory?.itemId;
+
+    // itemHistory テーブルから対応する itemId の数を取得する
+    const itemHistoryCount = await prisma.itemHistory.count({
+      where: {
+        itemId,
+      },
+    });
+
+    // itemHistory テーブルから対応する itemId が 1 つであれば、item テーブルも削除する
+    if (itemHistoryCount === 1) {
+      // item テーブルを削除する
+      await prisma.item.delete({
+        where: {
+          id: itemId,
+        },
+      });
+      // prisma.itemが消えればそれに対応するitemHistoryも消えます（supabaseの設定）。
+    } else {
+      // itemHistory テーブルのレコードを削除する
+      await prisma.itemHistory.delete({
+        where: {
+          id,
+        },
+      });
+    }
+
+    res.status(200).json({ httpStatus: 200 });
   } catch (e) {
     return res.status(400).json(e);
   }
