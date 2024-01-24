@@ -12,9 +12,8 @@ app.use(cors());
 const prisma = new PrismaClient();
 
 // ここに共通ヘッダーのmiddlewareを定義
-app.use((req, res, next) => {
-  // Cookieを設定
-  res.cookie("myCookie", "cookievaluefromserverside", { maxAge: 900000 });
+app.use((req: Request, res: Response, next) => {
+  // 共通処理を記述
   next();
 });
 
