@@ -27,7 +27,7 @@ model Item {
 
 model ItemHistory {
   id        Int      @id @default(autoincrement())
-  price     Int
+  price     Float
   rate      Float
   inverseRate Float
   created_at DateTime @default(now())
