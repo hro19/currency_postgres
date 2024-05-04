@@ -114,6 +114,28 @@ app.post("/api/v1/items", async (req: Request, res: Response) => {
   }
 });
 
+//bulkでinsertでitemsにデータを追加
+app.post("/api/v1/items/bulk", async (req: Request, res: Response) => {
+  const items = req.body;
+
+  try {
+    const createdItems = await prisma.item.createMany({
+      data: items.map((item:any) => ({
+        name: item.name,
+        currencyCode: item.currencyCode,
+        userEmail: item.userEmail,
+      })),
+      skipDuplicates: true, // 重複するデータがあった場合、スキップする
+    });
+
+    res.status(201).json({ httpStatus: 201, createdItems });
+  } catch (e) {
+    console.error("Error creating items:", e);
+    return res.status(400).json({ error: "Error creating items" });
+  }
+});
+
+
 app.put("/api/v1/items/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const { name, currencyCode } = req.body;
