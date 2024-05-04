@@ -84,7 +84,7 @@ app.get("/api/v1/items/currency/:currencyCode", async (req: Request, res: Respon
       include: {
         histories: {
           orderBy: {
-            created_at: 'desc'
+            id: 'desc'
           }
         }
       },
