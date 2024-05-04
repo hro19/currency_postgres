@@ -327,3 +327,54 @@ app.post("/api/v1/itemsadd/bulk", async (req: Request, res: Response) => {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// 単体itemのヒストリーを全て書き換えるAPI
+app.post("/api/v1/items/:id/new_itemhistories", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const newItemHistories = req.body;
+
+  try {
+    await prisma.$transaction(async (prisma) => {
+      // 対応するitemを取得
+      const item = await prisma.item.findUnique({
+        where: {
+          id,
+        },
+        include: {
+          histories: true,
+        },
+      });
+
+      if (!item) {
+        return res.status(404).json({ error: "Item not found" });
+      }
+
+      // 既存のitemHistoriesを削除
+      await prisma.itemHistory.deleteMany({
+        where: {
+          itemId: id,
+        },
+      });
+
+      // 新しいitemHistoriesを作成
+      const createdItemHistories = [];
+      for (const newItemHistory of newItemHistories) {
+        const createdItemHistory = await prisma.itemHistory.create({
+          data: {
+            price: newItemHistory.price,
+            rate: newItemHistory.rate,
+            inverseRate: newItemHistory.inverseRate,
+            itemId: id,
+          },
+        });
+        createdItemHistories.push(createdItemHistory);
+      }
+
+      // 応答に成功した情報を返す
+      res.status(201).json({ httpStatus: 201, createdItemHistories });
+    });
+  } catch (error) {
+    console.error("Error creating new itemHistories:", error);
+    return res.status(400).json({ error: "Error creating new itemHistories" });
+  }
+});
