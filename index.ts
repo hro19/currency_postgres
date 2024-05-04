@@ -284,4 +284,46 @@ app.post("/api/v1/itemsadd", async (req: Request, res: Response) => {
   }
 });
 
+//bulkでinsertでitems,itemHistoryにデータを追加
+app.post("/api/v1/itemsadd/bulk", async (req: Request, res: Response) => {
+  const items = req.body;
+
+  try {
+    const createdItems = await prisma.$transaction(async (prisma) => {
+      const createdItemsWithHistories = await Promise.all(
+        items.map(async (item:any) => {
+          // 1. Item テーブルに新しいレコードを作成
+          const createdItem = await prisma.item.create({
+            data: {
+              name: item.name,
+              currencyCode: item.currencyCode,
+              userEmail: item.userEmail,
+            },
+          });
+
+          // 2. ItemHistory テーブルに新しいレコードを作成
+          const itemHistory = await prisma.itemHistory.create({
+            data: {
+              price: item.price,
+              itemId: createdItem.id, // Item レコードの ID を使用して関連付け
+              rate: item.rate,
+              inverseRate: item.inverseRate,
+            },
+          });
+
+          return { item: createdItem, itemHistory };
+        })
+      );
+
+      // 応答に成功した情報を返す
+      res.status(201).json({ httpStatus: 201, createdItemsWithHistories });
+    });
+  } catch (error) {
+    console.error("Error creating items and itemHistories:", error);
+    return res.status(400).json({ error: "Error creating items and itemHistories" });
+  } finally {
+    await prisma.$disconnect(); // 必要に応じてPrismaの接続を切断する
+  }
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
